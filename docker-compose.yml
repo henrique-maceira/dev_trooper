@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  dev-trooper:
+    build: .
+    container_name: dev-trooper-bot
+    env_file:
+      - .env
+    volumes:
+      - ./artifacts:/app/artifacts
+      - /tmp/dev_trooper:/tmp/dev_trooper
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8000:8000"
